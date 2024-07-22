@@ -12,6 +12,10 @@ const resolvers = {
     Query: {
         hello: () => 'Hello world!',
     },
+
+    Mutation: {
+        hello: () => 'Hello world!',
+    }
 };
 
 export const schema = makeExecutableSchema({
