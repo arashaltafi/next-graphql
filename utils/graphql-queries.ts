@@ -17,6 +17,17 @@ export const GET_USERS = gql`
   }
 `;
 
+export const GET_USER = gql`
+  query getUser($id: Int!) {
+    user(id: $id) {
+      _id
+      name
+      family
+      age
+    }
+  }
+`;
+
 export const GET_STUDENTS = gql`
   query getStudents {
     students(page: 1, page_size: 5) {
