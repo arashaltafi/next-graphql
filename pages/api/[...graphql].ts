@@ -5,6 +5,13 @@ import { NextApiRequest, NextApiResponse } from 'next';
 const apolloServer = new ApolloServer({
     schema,
     introspection: true,  // Allows introspection of the schema
+    context: ({ req }: { req: NextApiRequest }) => {
+        // Extract headers or other information from the request here
+        return {
+            token: req.headers.token,
+            theme: req.headers.theme,
+        };
+    }
 });
 
 const startServer = apolloServer.start();

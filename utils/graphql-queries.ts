@@ -6,6 +6,17 @@ export const GET_HELLO_WORLD = gql`
   }
 `;
 
+export const GET_USERS = gql`
+  query getUsers {
+    users {
+      _id
+      name
+      family
+      age
+    }
+  }
+`;
+
 export const GET_STUDENTS = gql`
   query getStudents {
     students(page: 1, page_size: 5) {
