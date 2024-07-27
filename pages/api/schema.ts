@@ -14,6 +14,11 @@ const typeDefs = gql`
     name: String
   }
 
+  type Token {
+    token: String
+    message: String
+  }
+
   type Query {
     arash: AAA
     users: [User]
@@ -21,7 +26,8 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    createUser(name: String!, family: String, age: Int): User
+    createUser(name: String!, family: String, age: Int): User,
+    loginUser(email: String!, password: String!): Token
   }
 `;
 
@@ -73,6 +79,19 @@ const resolvers = {
         name: args.name,
         family: args.family,
         age: args.age
+      }
+    },
+    loginUser: async (obj: any, args: any, context: any) => {
+      if (args.email === 'admin' && args.password === 'admin') {
+        return {
+          token: "asdaljfdnoqwefn",
+          message: "login success"
+        }
+      } else {
+        return {
+          token: "",
+          message: "login error"
+        }
       }
     }
   }
